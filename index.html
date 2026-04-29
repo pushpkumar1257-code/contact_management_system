@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>📱 My Contact Manager</h1>
+
+<form>
+    <input name="q" placeholder="Search contact">
+    <button>Search</button>
+</form>
+
+<a href="/add">➕ Add Contact</a>
+
+<table border="1">
+<tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Created</th>
+    <th>Action</th>
+</tr>
+
+{% for c in data %}
+<tr>
+    <td>{{c.name}}</td>
+    <td>{{c.phone}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.created}}</td>
+    <td>
+        <a href="/edit/{{c.id}}">Edit</a> |
+        <a href="/delete/{{c.id}}">Delete</a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
